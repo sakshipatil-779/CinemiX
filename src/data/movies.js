@@ -19,7 +19,7 @@ export const MOVIES_DATA = [
     director: "Marcus Vance",
     cast: ["Leo Sterling", "Maya Lin", "David Harbour", "Tara Strong"],
     popularity: 98,
-    trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    trailerUrl: "https://www.youtube.com/embed/CBEvfZu4HE4",
     trending: true,
     recentlyAdded: true,
     isHeroFeatured: true
@@ -40,7 +40,7 @@ export const MOVIES_DATA = [
     director: "Clara Beauchamp",
     cast: ["Arthur Pendelton", "Simon Pegg", "Helena Fox", "Jack Whitehall"],
     popularity: 94,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/bp4_7T9J6Fg",
     trending: true,
     recentlyAdded: false
   },
@@ -60,7 +60,7 @@ export const MOVIES_DATA = [
     director: "Guillermo Navarro",
     cast: ["Eva Green", "Mads Mikkelsen", "Dev Patel", "Lupita Nyong'o"],
     popularity: 91,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/zDjEw_VULDM",
     trending: true,
     recentlyAdded: false
   },
@@ -80,7 +80,7 @@ export const MOVIES_DATA = [
     director: "Denis Villeneuve",
     cast: ["Oscar Isaac", "Rebecca Ferguson", "Idris Elba", "Florence Pugh"],
     popularity: 97,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/PDJLvF1dUek",
     trending: true,
     recentlyAdded: true
   },
@@ -100,7 +100,7 @@ export const MOVIES_DATA = [
     director: "Kenji Sato",
     cast: ["Hiroyuki Sanada", "Rinko Kikuchi", "Tadanobu Asano", "Ken Watanabe"],
     popularity: 99,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/CBEvfZu4HE4",
     trending: true,
     recentlyAdded: false
   },
@@ -120,7 +120,7 @@ export const MOVIES_DATA = [
     director: "Matt Reeves",
     cast: ["Robert Pattinson", "Zoe Kravitz", "Paul Dano", "Colin Farrell"],
     popularity: 93,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/bp4_7T9J6Fg",
     trending: true,
     recentlyAdded: false
   },
@@ -140,7 +140,7 @@ export const MOVIES_DATA = [
     director: "Nagraj Manjule",
     cast: ["Subodh Bhave", "Amey Wagh", "Sai Tamhankar", "Girija Oak"],
     popularity: 89,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/zDjEw_VULDM",
     trending: true,
     recentlyAdded: true
   },
@@ -160,7 +160,7 @@ export const MOVIES_DATA = [
     director: "Anurag Kashyap",
     cast: ["Rajkummar Rao", "Radhika Apte", "Vicky Kaushal", "Sanya Malhotra"],
     popularity: 90,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/izGwDsrQ1eQ",
     trending: false,
     recentlyAdded: true
   },
@@ -180,7 +180,7 @@ export const MOVIES_DATA = [
     director: "Hayao Miyazaki",
     cast: ["Daisy Ridley", "Mark Hamill", "Christian Bale", "Gemma Chan"],
     popularity: 95,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/CBEvfZu4HE4",
     trending: true,
     recentlyAdded: true
   },
@@ -200,7 +200,7 @@ export const MOVIES_DATA = [
     director: "Bong Joon-ho",
     cast: ["Song Kang-ho", "Gong Yoo", "Bae Doona", "Ma Dong-seok"],
     popularity: 96,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/bp4_7T9J6Fg",
     trending: true,
     recentlyAdded: false
   },
@@ -220,7 +220,7 @@ export const MOVIES_DATA = [
     director: "Christopher Nolan",
     cast: ["Cillian Murphy", "Jessica Chastain", "Michael Caine", "John David Washington"],
     popularity: 97,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/zDjEw_VULDM",
     trending: true,
     recentlyAdded: false
   },
@@ -240,7 +240,7 @@ export const MOVIES_DATA = [
     director: "Jean-Pierre Jeunet",
     cast: ["Audrey Tautou", "Mathieu Kassovitz", "Vincent Cassel"],
     popularity: 81,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/izGwDsrQ1eQ",
     trending: false,
     recentlyAdded: true
   },
@@ -260,7 +260,7 @@ export const MOVIES_DATA = [
     director: "Robert Eggers",
     cast: ["Willem Dafoe", "Paul Mescal", "Anya Taylor-Joy"],
     popularity: 86,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/CBEvfZu4HE4",
     trending: false,
     recentlyAdded: false
   },
@@ -280,7 +280,7 @@ export const MOVIES_DATA = [
     director: "Alex Garland",
     cast: ["Natalie Portman", "Oscar Isaac", "Benedict Wong", "Tessa Thompson"],
     popularity: 91,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/bp4_7T9J6Fg",
     trending: false,
     recentlyAdded: true
   },
@@ -300,7 +300,7 @@ export const MOVIES_DATA = [
     director: "Takashi Miike",
     cast: ["Hiroyuki Sanada", "Kento Yamazaki", "Anna Sawai"],
     popularity: 95,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/zDjEw_VULDM",
     trending: true,
     recentlyAdded: false
   },
@@ -320,7 +320,7 @@ export const MOVIES_DATA = [
     director: "Sachin Kundalkar",
     cast: ["Priya Bapat", "Umesh Kamat", "Siddharth Chandekar"],
     popularity: 84,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/izGwDsrQ1eQ",
     trending: false,
     recentlyAdded: true
   },
@@ -340,7 +340,7 @@ export const MOVIES_DATA = [
     director: "Sriram Raghavan",
     cast: ["Nawazuddin Siddiqui", "Manoj Bajpayee", "Jaideep Ahlawat"],
     popularity: 92,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/CBEvfZu4HE4",
     trending: true,
     recentlyAdded: true
   },
@@ -360,7 +360,7 @@ export const MOVIES_DATA = [
     director: "Guillaume Canet",
     cast: ["Romain Duris", "Marion Cotillard", "Daniel Bruhl"],
     popularity: 87,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/bp4_7T9J6Fg",
     trending: false,
     recentlyAdded: false
   },
@@ -380,7 +380,7 @@ export const MOVIES_DATA = [
     director: "Mike Flanagan",
     cast: ["Carla Gugino", "Kate Siegel", "Rahul Kohli", "Henry Thomas"],
     popularity: 83,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/zDjEw_VULDM",
     trending: false,
     recentlyAdded: false
   },
@@ -400,7 +400,7 @@ export const MOVIES_DATA = [
     director: "Alejandro G. Inarritu",
     cast: ["Pedro Pascal", "Benicio Del Toro", "Tenoch Huerta", "Salma Hayek"],
     popularity: 93,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/izGwDsrQ1eQ",
     trending: true,
     recentlyAdded: false
   },
@@ -420,7 +420,7 @@ export const MOVIES_DATA = [
     director: "Alfonso Cuaron",
     cast: ["Sandra Bullock", "George Clooney", "Matthew McConaughey", "Anne Hathaway"],
     popularity: 100,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/CBEvfZu4HE4",
     trending: true,
     recentlyAdded: true
   },
@@ -440,7 +440,7 @@ export const MOVIES_DATA = [
     director: "Makoto Shinkai",
     cast: ["Ryunosuke Kamiki", "Mone Kamishiraishi", "Masami Nagasawa"],
     popularity: 94,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/bp4_7T9J6Fg",
     trending: true,
     recentlyAdded: false
   },
@@ -460,7 +460,7 @@ export const MOVIES_DATA = [
     director: "Farhan Akhtar",
     cast: ["Hrithik Roshan", "Deepika Padukone", "Pankaj Tripathi", "Boman Irani"],
     popularity: 90,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/zDjEw_VULDM",
     trending: false,
     recentlyAdded: true
   },
@@ -480,7 +480,7 @@ export const MOVIES_DATA = [
     director: "J.A. Bayona",
     cast: ["Javier Bardem", "Ana de Armas", "Wagner Moura"],
     popularity: 85,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/izGwDsrQ1eQ",
     trending: false,
     recentlyAdded: false
   },
@@ -500,7 +500,7 @@ export const MOVIES_DATA = [
     director: "Rian Johnson",
     cast: ["Daniel Craig", "Steven Yeun", "Awkwafina", "Dave Bautista"],
     popularity: 88,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/CBEvfZu4HE4",
     trending: false,
     recentlyAdded: true
   },
@@ -520,7 +520,7 @@ export const MOVIES_DATA = [
     director: "Pete Docter",
     cast: ["Tom Hanks", "Tim Allen", "Kristen Schaal", "Bill Hader"],
     popularity: 92,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/bp4_7T9J6Fg",
     trending: true,
     recentlyAdded: true
   },
@@ -540,7 +540,7 @@ export const MOVIES_DATA = [
     director: "Pedro Almodóvar",
     cast: ["Penélope Cruz", "Antonio Banderas", "Blanca Suárez"],
     popularity: 82,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/zDjEw_VULDM",
     trending: false,
     recentlyAdded: false
   },
@@ -560,7 +560,7 @@ export const MOVIES_DATA = [
     director: "Park Chan-wook",
     cast: ["Lee Byung-hun", "Kim Go-eun", "Yoo Ah-in", "Choi Min-sik"],
     popularity: 96,
-    trailerUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    trailerUrl: "https://www.youtube.com/embed/izGwDsrQ1eQ",
     trending: true,
     recentlyAdded: true
   }

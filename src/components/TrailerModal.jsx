@@ -49,7 +49,7 @@ export default function TrailerModal() {
           <div style={{ position: "relative", width: "100%", paddingBottom: "56.25%", borderRadius: "14px", overflow: "hidden", background: "#000000" }}>
             <iframe
               style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
-              src={`${trailerMovie.trailerUrl || "https://www.youtube.com/embed/ScMzIvxBSi4"}?autoplay=1&rel=0`}
+              src={`${trailerMovie.trailerUrl || "https://www.youtube.com/embed/CBEvfZu4HE4"}?autoplay=1&rel=0`}
               title={`${trailerMovie.title} Official Trailer`}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

@@ -3,17 +3,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import {
   Film,
   Compass,
-  Layers,
   Heart,
   PlaySquare,
-  Sparkles,
-  Settings,
-  LogOut,
   ChevronLeft,
   ChevronRight
 } from "lucide-react";
 import { useMovieContext } from "../context/MovieContext";
-import toast from "react-hot-toast";
 
 export default function Sidebar() {
   const {
@@ -22,18 +17,6 @@ export default function Sidebar() {
     setIsSidebarCollapsed
   } = useMovieContext();
   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    toast("Logged out of CinemiX Demo session", {
-      icon: "👋",
-      style: {
-        borderRadius: "12px",
-        background: "#211B2D",
-        color: "#F8F6FC",
-        border: "1px solid rgba(255, 255, 255, 0.1)"
-      }
-    });
-  };
 
   return (
     <aside className={`sidebar ${isSidebarCollapsed ? "collapsed" : ""}`}>
@@ -80,15 +63,6 @@ export default function Sidebar() {
         </NavLink>
 
         <NavLink
-          to="/genres"
-          className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
-          title="Genres"
-        >
-          <Layers className="nav-icon" />
-          {!isSidebarCollapsed && <span className="nav-text">Genres</span>}
-        </NavLink>
-
-        <NavLink
           to="/favourites"
           className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
           title="Favourites"
@@ -99,37 +73,7 @@ export default function Sidebar() {
             <span className="nav-badge">{favourites.length}</span>
           )}
         </NavLink>
-
-        <div className="nav-divider" />
-
-        <NavLink
-          to="/recently-added"
-          className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
-          title="Recently Added"
-        >
-          <Sparkles className="nav-icon" />
-          {!isSidebarCollapsed && <span className="nav-text">Recently Added</span>}
-        </NavLink>
-
-        <div className="nav-divider" />
-
-        <NavLink
-          to="/settings"
-          className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
-          title="Settings"
-        >
-          <Settings className="nav-icon" />
-          {!isSidebarCollapsed && <span className="nav-text">Settings</span>}
-        </NavLink>
       </nav>
-
-      {/* Footer / Logout */}
-      <div className="sidebar-footer">
-        <button className="logout-btn" onClick={handleLogout} title="Logout">
-          <LogOut className="nav-icon" />
-          {!isSidebarCollapsed && <span className="logout-text">Logout</span>}
-        </button>
-      </div>
     </aside>
   );
 }
