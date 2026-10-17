@@ -13,7 +13,7 @@ const DEFAULT_FILTERS = {
   selectedLanguage: "All",
   releaseYear: "All",
   durationCategory: "All",
-  sortBy: "popularity"
+  sortBy: "match-score"
 };
 
 export default function Explore() {
