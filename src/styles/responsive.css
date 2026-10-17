@@ -1,0 +1,180 @@
+/* CinemiX Responsive & Accessibility Styles */
+
+@media (max-width: 1280px) {
+  .cinemix-viewport {
+    padding: 12px;
+  }
+  
+  .cinemix-app-shell {
+    height: calc(100vh - 24px);
+    border-radius: var(--radius-lg);
+  }
+
+  .hero-banner {
+    height: 340px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: var(--sidebar-collapsed-width);
+    padding: 20px 10px;
+  }
+
+  .brand-name,
+  .nav-text,
+  .nav-badge,
+  .logout-text,
+  .sidebar-collapse-btn {
+    display: none;
+  }
+
+  .nav-link, .logout-btn {
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .brand-wrapper {
+    justify-content: center;
+  }
+
+  .topbar {
+    padding: 0 20px;
+  }
+
+  .view-content-area {
+    padding: 20px;
+  }
+
+  .hero-banner {
+    height: 320px;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cinemix-viewport {
+    padding: 0;
+  }
+
+  .cinemix-app-shell {
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+    flex-direction: column;
+  }
+
+  /* Hide Desktop Sidebar on Mobile */
+  .sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100% !important;
+    height: 64px;
+    flex-direction: row;
+    padding: 0 12px;
+    border-right: none;
+    border-top: 1px solid var(--border-subtle);
+    background: #140e1f;
+    z-index: 50;
+    align-items: center;
+  }
+
+  .sidebar-header,
+  .nav-divider,
+  .sidebar-footer {
+    display: none;
+  }
+
+  .sidebar-content {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    overflow: visible;
+  }
+
+  .nav-link {
+    padding: 10px;
+  }
+
+  .view-content-area {
+    padding: 16px 16px 80px 16px;
+  }
+
+  .topbar {
+    padding: 0 16px;
+    height: 64px;
+  }
+
+  .search-container {
+    max-width: 240px;
+  }
+
+  .hero-banner {
+    height: 380px;
+  }
+
+  .hero-overlay {
+    padding: 20px;
+  }
+
+  .hero-title {
+    font-size: 24px;
+  }
+
+  .hero-synopsis {
+    font-size: 13px;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+
+  .modal-top-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .modal-poster {
+    width: 110px;
+  }
+
+  .modal-meta-row {
+    justify-content: center;
+  }
+
+  .modal-actions {
+    justify-content: center;
+  }
+}
+
+/* Reduced Motion Preference Support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

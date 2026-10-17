@@ -1,0 +1,55 @@
+:root {
+  /* Core Color Palette from Design Specification */
+  --bg-main: #170d2b;
+  --bg-outer-start: #25104a;
+  --bg-outer-end: #3b1670;
+  --bg-surface: #100c19;
+  --bg-surface-elevated: #1a1426;
+  --bg-sidebar: #181224;
+  --bg-sidebar-elevated: #211b2d;
+  --bg-card: #211a2d;
+  --bg-card-hover: #2d243d;
+  --bg-input: #211a2b;
+
+  /* Accent Colors */
+  --accent-primary: #b98af5;
+  --accent-secondary: #8b5cf6;
+  --accent-glow: rgba(185, 138, 245, 0.45);
+  --accent-gradient: linear-gradient(135deg, #b98af5 0%, #8b5cf6 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #c79ff7 0%, #9a70f8 100%);
+  --progress-indicator: #b85cf6;
+
+  /* Text Colors */
+  --text-primary: #f8f6fc;
+  --text-secondary: #b8b0c8;
+  --text-muted: #8d849f;
+  --text-dim: #655d78;
+
+  /* Glassmorphism & Borders */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-accent: rgba(185, 138, 245, 0.28);
+  --glass-bg: rgba(33, 27, 45, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.1);
+
+  /* Shadows */
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-elevated: 0 10px 30px rgba(10, 5, 20, 0.6);
+  --shadow-glow: 0 0 25px rgba(139, 92, 246, 0.25);
+  --shadow-glow-accent: 0 0 35px rgba(185, 138, 245, 0.35);
+
+  /* Dimensions & Spacing */
+  --sidebar-width: 240px;
+  --sidebar-collapsed-width: 80px;
+  --topbar-height: 72px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 26px;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
