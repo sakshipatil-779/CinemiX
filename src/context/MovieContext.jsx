@@ -13,11 +13,10 @@ const DEFAULT_PREFERENCES = {
   reducedMotion: false
 };
 
-const INITIAL_FAVOURITES = ["cinemix-001", "cinemix-005"];
+const INITIAL_FAVOURITES = ["tmdb-27205", "tmdb-19995"];
 const INITIAL_RATINGS = {
-  "cinemix-001": 9,
-  "cinemix-005": 10,
-  "cinemix-015": 8
+  "tmdb-27205": 10,
+  "tmdb-19995": 9
 };
 
 export function MovieProvider({ children }) {

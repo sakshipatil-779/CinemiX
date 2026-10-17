@@ -15,9 +15,9 @@ export default function Home() {
       {/* Featured Hero Banner */}
       <HeroBanner />
 
-      {/* Recommended For You Row */}
+      {/* Fan FavouriteRow */}
       <MovieRow
-        title="Recommended for You"
+        title="Fan Favourites"
         movies={recommendations.slice(0, 8)}
         seeAllPath="/explore?sort=match-score"
         badge={
@@ -34,7 +34,7 @@ export default function Home() {
               gap: "4px"
             }}
           >
-            <Sparkles size={11} /> AI Match
+            <Sparkles size={11} /> Most Viewed
           </span>
         }
       />
@@ -59,34 +59,12 @@ export default function Home() {
               gap: "4px"
             }}
           >
-            <Flame size={11} /> Top 10
+            <Flame size={11} /> Top 20
           </span>
         }
       />
 
-      {/* Recently Added Row */}
-      <MovieRow
-        title="Recently Added"
-        movies={recentlyAddedMovies}
-        seeAllPath="/recently-added"
-        badge={
-          <span
-            style={{
-              fontSize: "11px",
-              padding: "3px 9px",
-              borderRadius: "999px",
-              background: "rgba(16, 185, 129, 0.15)",
-              color: "#10b981",
-              fontWeight: "600",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "4px"
-            }}
-          >
-            <Clock size={11} /> New Releases
-          </span>
-        }
-      />
+
     </div>
   );
 }

@@ -28,7 +28,10 @@ export default function MovieCard({
     ? "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80"
     : (movie.poster || movie.backdrop);
 
-  const resolvedMatchScore = matchScore || movie.matchScore || 99;
+  const resolvedMatchScore =
+    typeof matchScore === "number"
+      ? matchScore
+      : (typeof movie.matchScore === "number" ? movie.matchScore : 90);
 
   return (
     <div

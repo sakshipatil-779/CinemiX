@@ -68,8 +68,8 @@ export default function FilterPanel({
             onChange={handleSortChange}
             aria-label="Sort movies by"
           >
-            <option value="popularity">Most Popular</option>
             <option value="match-score">Best Match Score</option>
+            <option value="popularity">Most Popular</option>
             <option value="rating-desc">Highest Rated</option>
             <option value="year-desc">Newest First</option>
             <option value="year-asc">Oldest First</option>
@@ -146,11 +146,18 @@ export default function FilterPanel({
             onChange={handleYearChange}
             aria-label="Select release year"
           >
-            <option value="All">All Years</option>
-            <option value="2025+">2025 & Beyond (Upcoming)</option>
+            <option value="All">All Release Years</option>
+            <option value="2020s">2020s (Modern / Recent)</option>
+            <option value="2010s">2010s Blockbusters</option>
+            <option value="2000s">2000s Millennium</option>
+            <option value="1990s">1990s Golden Era</option>
+            <option value="1980s">1980s Classics</option>
+            <option value="pre-1980">Pre-1980 Vintage</option>
             <option value="2024">2024 Releases</option>
             <option value="2023">2023 Releases</option>
-            <option value="2020-2024">Recent (2020 - 2024)</option>
+            <option value="2022">2022 Releases</option>
+            <option value="2021">2021 Releases</option>
+            <option value="2020">2020 Releases</option>
           </select>
         </div>
 
