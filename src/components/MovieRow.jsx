@@ -7,7 +7,6 @@ export default function MovieRow({
   movies = [],
   seeAllPath = "/explore",
   isRanked = false,
-  showReasons = false,
   badge = null
 }) {
   const navigate = useNavigate();
@@ -39,7 +38,7 @@ export default function MovieRow({
             movie={movie}
             isRowItem={true}
             rankingNumber={isRanked ? index + 1 : null}
-            showReasons={showReasons}
+            showMatchScore={false}
           />
         ))}
       </div>

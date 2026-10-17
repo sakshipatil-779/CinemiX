@@ -35,67 +35,69 @@ export function MovieProvider({ children }) {
   const toggleFavourite = useCallback((movieId) => {
     const movie = movies.find(m => m.id === movieId);
     const title = movie ? movie.title : "Movie";
+    const exists = favourites.includes(movieId);
 
-    setFavourites(prev => {
-      const exists = prev.includes(movieId);
-      if (exists) {
-        toast(`Removed "${title}" from Favourites`, {
-          icon: "💔",
-          style: {
-            borderRadius: "12px",
-            background: "#211B2D",
-            color: "#F8F6FC",
-            border: "1px solid rgba(255, 255, 255, 0.1)"
-          }
-        });
-        return prev.filter(id => id !== movieId);
-      } else {
-        toast.success(`Added "${title}" to Favourites!`, {
-          icon: "💜",
-          style: {
-            borderRadius: "12px",
-            background: "#211B2D",
-            color: "#F8F6FC",
-            border: "1px solid rgba(185, 138, 245, 0.3)"
-          }
-        });
-        return [...prev, movieId];
-      }
-    });
-  }, [movies, setFavourites]);
+    if (exists) {
+      setFavourites(prev => prev.filter(id => id !== movieId));
+      toast(`Removed "${title}" from Favourites`, {
+        id: `fav-${movieId}`,
+        icon: "💔",
+        style: {
+          borderRadius: "12px",
+          background: "#211B2D",
+          color: "#F8F6FC",
+          border: "1px solid rgba(255, 255, 255, 0.1)"
+        }
+      });
+    } else {
+      setFavourites(prev => (prev.includes(movieId) ? prev : [...prev, movieId]));
+      toast.success(`Added "${title}" to Favourites!`, {
+        id: `fav-${movieId}`,
+        icon: "💜",
+        style: {
+          borderRadius: "12px",
+          background: "#211B2D",
+          color: "#F8F6FC",
+          border: "1px solid rgba(185, 138, 245, 0.3)"
+        }
+      });
+    }
+  }, [movies, favourites, setFavourites]);
 
   // Set / Clear User Rating
   const setUserRating = useCallback((movieId, rating) => {
     const movie = movies.find(m => m.id === movieId);
     const title = movie ? movie.title : "Movie";
 
-    setUserRatings(prev => {
-      const newRatings = { ...prev };
-      if (rating === null || rating === undefined || rating === 0) {
+    if (rating === null || rating === undefined || rating === 0) {
+      setUserRatings(prev => {
+        const newRatings = { ...prev };
         delete newRatings[movieId];
-        toast(`Removed rating for "${title}"`, {
-          icon: "⭐",
-          style: {
-            borderRadius: "12px",
-            background: "#211B2D",
-            color: "#F8F6FC",
-            border: "1px solid rgba(255, 255, 255, 0.1)"
-          }
-        });
-      } else {
-        newRatings[movieId] = rating;
-        toast.success(`You rated "${title}" ${rating}/10!`, {
-          icon: "⭐",
-          style: {
-            borderRadius: "12px",
-            background: "#211B2D",
-            color: "#F8F6FC",
-            border: "1px solid rgba(185, 138, 245, 0.3)"
-          }
-        });
-      }
-      return newRatings;
-    });
+        return newRatings;
+      });
+      toast(`Removed rating for "${title}"`, {
+        id: `rating-${movieId}`,
+        icon: "⭐",
+        style: {
+          borderRadius: "12px",
+          background: "#211B2D",
+          color: "#F8F6FC",
+          border: "1px solid rgba(255, 255, 255, 0.1)"
+        }
+      });
+    } else {
+      setUserRatings(prev => ({ ...prev, [movieId]: rating }));
+      toast.success(`You rated "${title}" ${rating}/10!`, {
+        id: `rating-${movieId}`,
+        icon: "⭐",
+        style: {
+          borderRadius: "12px",
+          background: "#211B2D",
+          color: "#F8F6FC",
+          border: "1px solid rgba(185, 138, 245, 0.3)"
+        }
+      });
+    }
   }, [movies, setUserRatings]);
 
   // Update Preferences

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
+import { Filter } from "lucide-react";
 import { useMovieContext } from "../context/MovieContext";
 import FilterPanel from "../components/FilterPanel";
 import MovieCard from "../components/MovieCard";
@@ -16,7 +17,14 @@ const DEFAULT_FILTERS = {
 };
 
 export default function Explore() {
-  const { movies, globalSearch, setGlobalSearch } = useMovieContext();
+  const {
+    movies,
+    globalSearch,
+    setGlobalSearch,
+    preferences,
+    userRatings,
+    favourites
+  } = useMovieContext();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
@@ -35,13 +43,30 @@ export default function Explore() {
     }
   }, [searchParams]);
 
-  // Combined filtering
+  // Check if any filter or search query is currently active
+  const hasFiltersApplied = Boolean(
+    (filters.selectedGenres && filters.selectedGenres.length > 0) ||
+    (filters.minRating && filters.minRating > 0) ||
+    (filters.selectedLanguage && filters.selectedLanguage !== "All") ||
+    (filters.releaseYear && filters.releaseYear !== "All") ||
+    (filters.durationCategory && filters.durationCategory !== "All") ||
+    (globalSearch && globalSearch.trim().length > 0)
+  );
+
+  // Combined filtering with match score calculation (only returns movies when filters are applied)
   const filteredResults = useMemo(() => {
-    return filterMovies(movies, {
-      ...filters,
-      searchQuery: globalSearch
-    });
-  }, [movies, filters, globalSearch]);
+    if (!hasFiltersApplied) {
+      return [];
+    }
+    return filterMovies(
+      movies,
+      {
+        ...filters,
+        searchQuery: globalSearch
+      },
+      { preferences, userRatings, favourites }
+    );
+  }, [hasFiltersApplied, movies, filters, globalSearch, preferences, userRatings, favourites]);
 
   const handleResetFilters = () => {
     setFilters(DEFAULT_FILTERS);
@@ -66,13 +91,25 @@ export default function Explore() {
         setFilters={setFilters}
         totalResults={filteredResults.length}
         onReset={handleResetFilters}
+        hasFiltersApplied={hasFiltersApplied}
       />
 
       {/* Results Grid or Empty State */}
-      {filteredResults.length > 0 ? (
+      {!hasFiltersApplied ? (
+        <EmptyState
+          icon={Filter}
+          title="No filters applied"
+          description="Select a genre, choose a language, set a minimum rating, or search above to discover matching movies."
+        />
+      ) : filteredResults.length > 0 ? (
         <div className="movie-grid">
           {filteredResults.map(movie => (
-            <MovieCard key={movie.id} movie={movie} />
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              showMatchScore={true}
+              matchScore={movie.matchScore}
+            />
           ))}
         </div>
       ) : (

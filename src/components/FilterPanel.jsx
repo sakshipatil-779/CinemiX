@@ -6,7 +6,8 @@ export default function FilterPanel({
   filters,
   setFilters,
   totalResults,
-  onReset
+  onReset,
+  hasFiltersApplied = false
 }) {
   const {
     selectedGenres,
@@ -68,6 +69,7 @@ export default function FilterPanel({
             aria-label="Sort movies by"
           >
             <option value="popularity">Most Popular</option>
+            <option value="match-score">Best Match Score</option>
             <option value="rating-desc">Highest Rated</option>
             <option value="year-desc">Newest First</option>
             <option value="year-asc">Oldest First</option>
@@ -172,13 +174,23 @@ export default function FilterPanel({
       {/* Action / Results Bar */}
       <div className="filter-actions-bar">
         <div className="results-count">
-          Showing <strong>{totalResults}</strong> movie{totalResults === 1 ? "" : "s"}
+          {hasFiltersApplied ? (
+            <>
+              Showing <strong>{totalResults}</strong> movie{totalResults === 1 ? "" : "s"}
+            </>
+          ) : (
+            <span style={{ color: "var(--text-muted)" }}>
+              No filters applied • Select criteria above to display movies
+            </span>
+          )}
         </div>
 
-        <button className="clear-filters-btn" onClick={onReset}>
-          <RotateCcw size={13} />
-          <span>Clear All Filters</span>
-        </button>
+        {hasFiltersApplied && (
+          <button className="clear-filters-btn" onClick={onReset}>
+            <RotateCcw size={13} />
+            <span>Clear All Filters</span>
+          </button>
+        )}
       </div>
     </div>
   );

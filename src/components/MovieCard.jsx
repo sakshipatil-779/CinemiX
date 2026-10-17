@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { Star, Heart, Eye, Sparkles } from "lucide-react";
+import { Star, Heart, Eye, Puzzle } from "lucide-react";
 import { useMovieContext } from "../context/MovieContext";
 
-export default function MovieCard({ movie, isRowItem = false, rankingNumber = null, showReasons = false }) {
+export default function MovieCard({
+  movie,
+  isRowItem = false,
+  rankingNumber = null,
+  showMatchScore = false,
+  matchScore = null
+}) {
   const { setSelectedMovie, toggleFavourite, isFavourite } = useMovieContext();
   const [imageError, setImageError] = useState(false);
 
@@ -21,6 +27,8 @@ export default function MovieCard({ movie, isRowItem = false, rankingNumber = nu
   const posterSrc = imageError
     ? "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80"
     : (movie.poster || movie.backdrop);
+
+  const resolvedMatchScore = matchScore || movie.matchScore || 99;
 
   return (
     <div
@@ -48,8 +56,8 @@ export default function MovieCard({ movie, isRowItem = false, rankingNumber = nu
 
         {/* Rating Badge */}
         <div className="card-rating-badge">
-          <Star size={11} fill="#f59e0b" />
-          <span>{movie.rating}</span>
+          <Star size={11} fill="#f59e0b" color="#f59e0b" />
+          <span>{movie.rating ? Number(movie.rating).toFixed(1) : "9.9"}</span>
         </div>
 
         {/* Favourite Button */}
@@ -59,11 +67,15 @@ export default function MovieCard({ movie, isRowItem = false, rankingNumber = nu
           title={favourite ? "Remove from Favourites" : "Add to Favourites"}
           aria-label={favourite ? "Remove from Favourites" : "Add to Favourites"}
         >
-          <Heart size={16} fill={favourite ? "currentColor" : "none"} />
+          <Heart
+            size={15}
+            fill={favourite ? "#ef4444" : "none"}
+            color={favourite ? "#ef4444" : "currentColor"}
+          />
         </button>
 
         {/* Optional Ranking Badge (#1, #2...) */}
-        {rankingNumber && (
+        {rankingNumber && !showMatchScore && (
           <div className="ranking-badge">
             #{rankingNumber}
           </div>
@@ -72,26 +84,39 @@ export default function MovieCard({ movie, isRowItem = false, rankingNumber = nu
         {/* Hover Action Overlay */}
         <div className="card-hover-overlay">
           <span className="quick-view-btn">
-            <Eye size={14} /> Quick View
+            <Eye size={13} /> Quick View
           </span>
         </div>
+
+        {/* Match Score Badge (Filter Screen Only) */}
+        {showMatchScore && (
+          <div className="card-match-badge">
+            <Puzzle size={13} className="match-puzzle-icon" />
+            <span className="match-score-text">Match Score</span>
+            <span className="match-score-value">{resolvedMatchScore}%</span>
+          </div>
+        )}
       </div>
 
       {/* Info Section */}
       <div className="movie-card-info">
+        {/* Movie Name */}
         <h3 className="movie-card-title">{movie.title}</h3>
-        <div className="movie-card-meta">
-          <span>{movie.genres?.[0] || "Cinema"}</span>
-          <span>{movie.releaseYear}</span>
+
+        {/* Language & Release Year */}
+        <div className="movie-card-meta-row">
+          <span className="movie-card-language">{movie.language || "English"}</span>
+          <span className="movie-card-year">{movie.releaseYear}</span>
         </div>
 
-        {/* Recommendation Reason Pill */}
-        {showReasons && movie.recommendationReasons?.[0] && (
-          <div className="rec-reason-badge" title={movie.recommendationReasons.join(" • ")}>
-            <Sparkles size={11} />
-            <span className="truncate">{movie.recommendationReasons[0]}</span>
-          </div>
-        )}
+        {/* Genre Tags */}
+        <div className="movie-card-genres">
+          {(movie.genres || []).slice(0, 3).map((genre) => (
+            <span key={genre} className="movie-genre-chip">
+              {genre}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );

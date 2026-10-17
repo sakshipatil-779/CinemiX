@@ -265,7 +265,8 @@
 
 
 /* =========================================
-   STANDARD MOVIE CARD (Portrait 2:3)
+/* =========================================
+   MOVIE CARD (Structured Design from Reference)
    ========================================= */
 .movie-card {
   position: relative;
@@ -277,11 +278,12 @@
   transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 
 .movie-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(185, 138, 245, 0.35);
+  border-color: rgba(185, 138, 245, 0.4);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6), 0 0 25px rgba(185, 138, 245, 0.2);
 }
 
@@ -290,11 +292,13 @@
   width: 190px;
 }
 
+/* Inset Poster Box with rounded corners */
 .movie-poster-box {
   width: 100%;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 1 / 1.08;
   position: relative;
   overflow: hidden;
+  border-radius: 12px;
   background: #191325;
 }
 
@@ -302,6 +306,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   transition: transform 0.5s ease;
 }
 
@@ -309,33 +314,35 @@
   transform: scale(1.05);
 }
 
-/* Poster Badges */
+/* Poster Rating Badge (Top-Left Pill) */
 .card-rating-badge {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  background: rgba(16, 12, 25, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  top: 8px;
+  left: 8px;
+  background: rgba(18, 14, 26, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(8px);
-  padding: 3px 8px;
+  padding: 3px 9px;
   border-radius: var(--radius-pill);
   font-size: 11px;
   font-weight: 700;
-  color: #f59e0b;
+  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 4px;
+  z-index: 2;
 }
 
+/* Poster Favourite Button (Top-Right Circle) */
 .card-fav-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 8px;
+  right: 8px;
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(16, 12, 25, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(18, 14, 26, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(8px);
   color: var(--text-secondary);
   display: flex;
@@ -346,42 +353,44 @@
 }
 
 .card-fav-btn:hover {
-  transform: scale(1.1);
-  color: #f43f5e;
+  transform: scale(1.12);
+  background: rgba(28, 22, 38, 0.95);
+  color: #ef4444;
 }
 
 .card-fav-btn.active {
-  color: #f43f5e;
-  background: rgba(244, 63, 94, 0.2);
-  border-color: rgba(244, 63, 94, 0.5);
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.45);
 }
 
+/* Ranking Badge (for top 10 rows) */
 .ranking-badge {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 8px;
+  left: 8px;
   background: var(--accent-gradient);
   color: #ffffff;
   font-weight: 800;
-  font-size: 11px;
+  font-size: 10px;
   padding: 3px 8px;
   border-radius: var(--radius-sm);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  z-index: 2;
 }
 
-/* Hover Quick Details Overlay */
+/* Hover Quick View Overlay (Center Pill) */
 .card-hover-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(16, 12, 25, 0.75);
-  backdrop-filter: blur(4px);
+  background: rgba(14, 10, 22, 0.65);
+  backdrop-filter: blur(3px);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   opacity: 0;
   transition: opacity var(--transition-fast);
+  z-index: 3;
 }
 
 .movie-card:hover .card-hover-overlay {
@@ -389,62 +398,122 @@
 }
 
 .quick-view-btn {
-  background: var(--accent-gradient);
+  background: rgba(30, 24, 42, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  padding: 8px 16px;
+  padding: 7px 16px;
   border-radius: var(--radius-pill);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   display: flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  transition: transform var(--transition-fast), background var(--transition-fast);
 }
 
-/* Card Body Info */
+.quick-view-btn:hover {
+  background: var(--accent-gradient);
+  border-color: transparent;
+  transform: scale(1.05);
+}
+
+/* Match Score Badge (Filter Screen Only - Bottom Center Pill) */
+.card-match-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(24, 32, 22, 0.92);
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  z-index: 4;
+}
+
+.card-match-badge .match-puzzle-icon {
+  color: #4ade80;
+  flex-shrink: 0;
+}
+
+.card-match-badge .match-score-text {
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+.card-match-badge .match-score-value {
+  color: #4ade80;
+  font-weight: 800;
+}
+
+/* Card Body Info (Below Image) */
 .movie-card-info {
-  padding: 12px 14px;
+  padding: 10px 4px 2px 4px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .movie-card-title {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   color: #ffffff;
+  line-height: 1.25;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin: 0;
 }
 
-.movie-card-meta {
+.movie-card-meta-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 12px;
+}
+
+.movie-card-language {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.movie-card-year {
   color: var(--text-muted);
 }
 
-/* Recommendation reason chip */
-.rec-reason-badge {
-  font-size: 11px;
-  color: var(--accent-primary);
-  background: rgba(185, 138, 245, 0.12);
-  border: 1px solid rgba(185, 138, 245, 0.25);
-  padding: 3px 8px;
-  border-radius: var(--radius-sm);
-  margin-top: 6px;
+/* Genre Pills */
+.movie-card-genres {
   display: flex;
-  align-items: center;
-  gap: 4px;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 2px;
+}
+
+.movie-genre-chip {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #d1cbdc;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  line-height: 1.2;
 }
 
 /* Grid Layout for Explore, Favourites, etc. */
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+  gap: 18px;
 }
 
 /* =========================================

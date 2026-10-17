@@ -15,12 +15,11 @@ export default function Home() {
       {/* Featured Hero Banner */}
       <HeroBanner />
 
-      {/* Recommended For You Row (Personalized with "Why this movie?" explanation badges) */}
+      {/* Recommended For You Row */}
       <MovieRow
         title="Recommended for You"
         movies={recommendations.slice(0, 8)}
-        seeAllPath="/explore?sort=rating-desc"
-        showReasons={true}
+        seeAllPath="/explore?sort=match-score"
         badge={
           <span
             style={{
