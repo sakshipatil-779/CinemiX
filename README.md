@@ -1,90 +1,191 @@
 # CinemiX — Cinematic Movie Discovery & Recommendation Platform
 
-CinemiX is a modern, responsive movie recommendation web application built with React, Vite, and custom CSS3. Designed with a dark-purple aesthetic, lavender accents, translucent glassmorphism surfaces, and intelligent recommendation scoring, CinemiX delivers an intelligent cinematic discovery experience.
+CinemiX is a modern, responsive web application for movie discovery and transparent recommendation scoring, built with **React 19**, **Vite 8**, and modular **CSS3 Glassmorphism**. Powered by an authentic **1,000-movie dataset** from TMDB via Kaggle, CinemiX delivers real-time, explainable weight-based match scoring, high-resolution visuals, and an interactive cinema browsing experience.
 
 ---
 
-## 🌟 Key Features
+## 🌟 Key Highlights
 
-### 1. Cinematic Home Dashboard
-- **Featured Hero Banner**: Dynamic hero carousel showcasing trending titles with backdrop artwork, "Now Trending" badge, genre tags, and **Watch Trailer** preview action.
-- **"Recommended for You" (AI/Rule-Based)**: Tailored recommendations with **"Why this movie?"** explanation tags (e.g., *"Matches your favourite genre: Sci-Fi"*, *"Critically acclaimed score of 8.9/10"*).
-- **Now Trending & Recently Added**: Ranked carousel (`#1`, `#2`, `#3`) and newly premiered films.
+* **Real Movie Dataset**: Over 1,000 verified movies spanning 1970–2024, complete with live TMDB posters, backdrops, real directors, cast, genres, and community ratings.
+* **Explainable Weight-Based Scoring**: Replaces black-box ML with an explicit, explainable **50 / 20 / 20 / 10 if-else scoring engine**.
+* **Filter View Match Score Badges**: Dynamic match percentage pills (`Match Score XX%`) displayed directly on cards in the Explore/Filter view.
+* **Responsive Dark Cinema UI**: Tailored with a sleek dark-purple aesthetic, glassmorphic overlays, responsive grids, and interactive modal dialogs.
+* **Interactive Trailer Previews**: Embedded HD trailer previews with modal overlays.
+* **Personal Library**: Local-storage-backed Favorites and user rating (1–10⭐) tracking without altering community baseline ratings.
 
-### 2. Multi-Criteria Explore & Search
-- **Instant Search**: Real-time matching across movie title, genres, director, cast members, language, and synopsis.
-- **Multi-Filter Engine**:
-  - **Genre Selection**: Multi-select pills across 13 genres (Action, Sci-Fi, Animation, Drama, etc.).
-  - **Min Rating Slider**: Interactive slider from 0 to 9.5.
-  - **Languages**: English, Hindi, Marathi, Japanese, Korean, Spanish, French.
-  - **Release Era**: 2025+ (Upcoming), 2024, 2023, and Recent (2020-2024).
-  - **Duration**: Under 90 mins, 90–120 mins, and Over 120 mins.
-  - **Sorting**: Most Popular, Highest Rated, Newest, Oldest, Title A-Z.
-- **Active Results Counter & Clear All**: One-click reset with empty-state recovery.
+---
 
-### 3. Transparent Recommendation Engine
-CinemiX calculates a personalized affinity score (0–100) using a transparent scoring formula:
-- **Genre Affinity (Up to 40 pts)**: Matches user's preferred genres and genres of films rated $\ge$ 8.
-- **Language Alignment (15 pts)**: Favors movies in the user's chosen languages.
-- **Critical Quality (Up to 25 pts)**: Scaled from the film's verified score (`(rating / 10) * 25`).
-- **Director & Similarity Match (Up to 20 pts)**: Shared directors and sub-genres with items in the user's Favourites or highly-rated library.
-- **Negative Feedback Penalty**: Movies rated $< 5$ are automatically excluded or penalized.
-- **Explainability**: Every recommendation includes a verifiable reason badge.
+## 🧮 How the Recommendation Engine Scores Movies
 
-### 4. Interactive Details & Personal Ratings
-- **Movie Details Modal**: Full-screen backdrop artwork, floating poster, tagline, metadata grid (Director, Cast, Audio/Subtitles, Match Index), and synopsis.
-- **Personal 1–10 Rating Control**: Separate personal rating system stored in `localStorage` without altering the verified community rating.
-- **Favourites**: Heart controls with reactive toast notifications.
-- **Trailer Playback**: High-definition trailer preview overlay with responsive 16:9 player.
+CinemiX uses an explicit, transparent weight-based rule system rather than opaque machine learning.
 
-### 5. Preference Tuning & Settings
-- Configure favorite genres and preferred languages.
-- Adjust minimum rating thresholds for recommendations.
-- Toggle reduced-motion effects for accessibility.
-- One-click **Reset Demo Data** or **Clear All Saved History**.
+### Scoring Weight Table
+
+| Rule | Weight | Condition & Logic |
+| :--- | :---: | :--- |
+| **Genre Match** | **50 points** | `IF` the movie genres match the user's selected genre, add **50 points**. |
+| **Language Match** | **20 points** | `IF` the movie language matches the user's selected language, add **20 points**. |
+| **Rating Quality** | **20 points** | `IF` movie rating is below minimum, **exclude the movie**. `ELSE`, calculate points proportionally: $(\frac{\text{rating}}{10}) \times 20$. |
+| **Keyword Match** | **10 points** | `IF` keyword matches title, overview, tagline, cast, director, or genres, add **10 points**. |
+
+### Normalization & Ranking
+
+* **Eligibility Filter**: Minimum rating acts as a hard eligibility filter. Movies below the threshold are excluded immediately.
+* **Normalization**: The final score is normalized to $100$ based on the preferences actually supplied by the user:
+  $$\text{Match Score} = \min\left(100, \operatorname{round}\left(\frac{\text{Earned Points}}{\text{Max Points for Supplied Criteria}} \times 100\right)\right)$$
+* **Ranking**: Eligible movies are ranked strictly by:
+  1. **Match Score** (descending)
+  2. **Rating** (descending tie-breaker)
+  3. **Popularity** (descending tie-breaker)
+
+---
+
+## 🎬 Dataset & Visual Assets
+
+* **Data Source**: Integrated from Kaggle's live TMDB Dataset (`asaniczka/tmdb-movies-dataset-2023-930k-movies`) and enriched with director and cast credits (`rounakbanik/the-movies-dataset`).
+* **Active TMDB CDN Links**:
+  * **Posters (`w500`)**: `https://image.tmdb.org/t/p/w500{poster_path}`
+  * **Backdrops (`w1280`)**: `https://image.tmdb.org/t/p/w1280{backdrop_path}`
+* **Decade & Era Coverage**:
+  * **2020s (Modern / Recent)**: *Oppenheimer*, *Barbie*, *Spider-Man: Across the Spider-Verse*, *Top Gun: Maverick*, *Dune*, etc.
+  * **2010s Blockbusters**: *Interstellar*, *Inception*, *The Avengers*, *Parasite*, *Whiplash*, etc.
+  * **2000s Millennium**: *The Dark Knight*, *Avatar*, *The Lord of the Rings*, *Gladiator*, *Spirited Away*, etc.
+  * **1990s Golden Era**: *Pulp Fiction*, *The Shawshank Redemption*, *The Matrix*, *Fight Club*, *Jurassic Park*, etc.
+  * **1980s & Vintage Classics**: *The Empire Strikes Back*, *The Godfather*, *Alien*, *Cinema Paradiso*, etc.
+
+---
+
+## 📁 Project Architecture
+
+```
+Cinemix/
+├── .env.example              # Environment variables template
+├── .gitignore                # Git ignore rules (protects .env and local tokens)
+├── index.html                # Entry HTML shell
+├── package.json              # Project dependencies and scripts
+├── vite.config.js            # Vite configuration
+└── src/
+    ├── main.jsx              # React DOM root entry
+    ├── App.jsx               # Application routing and layout wrapper
+    ├── components/
+    │   ├── EmptyState.jsx    # Graceful empty results fallback component
+    │   ├── FilterPanel.jsx   # Interactive genre, language, era, rating, and sort toolbar
+    │   ├── HeroBanner.jsx    # Auto-cycling featured banner with backdrop & trailer trigger
+    │   ├── MovieCard.jsx     # Card component with match score pills, ratings, and favorites
+    │   ├── MovieDetailsModal.jsx # Full-screen modal with synopsis, cast, and metadata
+    │   ├── MovieRow.jsx      # Horizontally scrollable movie carousel
+    │   ├── RatingControl.jsx # Interactive 1–10 star personal rating control
+    │   ├── Sidebar.jsx       # Left navigation sidebar
+    │   ├── Topbar.jsx        # Header with global search bar and brand logo
+    │   └── TrailerModal.jsx  # Responsive 16:9 HD video playback modal
+    ├── context/
+    │   └── MovieContext.jsx  # Global application state (favorites, ratings, search, modal)
+    ├── data/
+    │   └── movies.js         # Curated 1,000-movie dataset with genres, metadata, and trailers
+    ├── hooks/
+    │   └── useLocalStorage.js# Synchronized localStorage hook for user preferences
+    ├── pages/
+    │   ├── Explore.jsx       # Multi-criteria filter screen with match scores
+    │   ├── Favourites.jsx    # User's bookmarked movies
+    │   ├── Genres.jsx        # Category grid exploration
+    │   ├── Home.jsx          # Dashboard with Hero, Recommendations, and Trending rows
+    │   └── Settings.jsx      # Preference manager and data reset panel
+    ├── styles/
+    │   ├── components.css    # UI component styles & match score badges
+    │   ├── global.css        # Base styles, typography, and reset
+    │   ├── layout.css        # App shell, sidebar, and view container layout
+    │   ├── responsive.css    # Mobile, tablet, and reduced-motion media queries
+    │   └── variables.css     # Design tokens (colors, gradients, glassmorphism)
+    └── utils/
+        ├── movieFilters.js   # 50/20/20/10 if-else weight-based scoring and filter engine
+        └── recommendations.js# Home recommendation scoring algorithms
+```
 
 ---
 
 ## 🛠️ Technology Stack
 
 | Layer | Technology |
-|---|---|
-| **Framework** | React 19 + Vite 8 |
-| **Language** | JavaScript (ESNext, JSX) |
-| **Styling** | Vanilla CSS3 (Custom design tokens, Glassmorphism, CSS Grid, Flexbox) |
+| :--- | :--- |
+| **Frontend Framework** | React 19 |
+| **Build Tool & Bundler** | Vite 8 |
 | **Icons** | Lucide React |
-| **Routing** | React Router v7 |
-| **Motion** | Framer Motion |
+| **Routing** | React Router DOM v7 |
+| **Animations** | Framer Motion |
 | **Notifications** | React Hot Toast |
-| **Storage** | Browser `localStorage` with custom React hooks |
+| **Styling** | Vanilla CSS3 (Custom Design Tokens, Flexbox, CSS Grid) |
+| **Linter** | Oxlint |
+| **Data Provider** | Kaggle TMDB Movie Dataset API |
 
 ---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v18 or higher recommended; v24 tested)
-- npm (v9 or higher)
+* **Node.js**: v18.0.0 or higher (v20+ recommended)
+* **npm**: v9.0.0 or higher
 
-### Installation & Run
+### 1. Clone & Install
 
-1. Navigate to the project directory:
-   ```bash
-   cd CinemiX
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/your-username/Cinemix.git
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+# Navigate into the project directory
+cd Cinemix
 
-3. Launch development server:
-   ```bash
-   npm run dev
-   ```
-   The application will be running locally at `http://127.0.0.1:5173/`.
+# Install dependencies
+npm install
+```
 
-4. Build for production:
-   ```bash
-   npm run build
-   ```
+### 2. Configure Environment Variables
+
+Create a `.env` file in the root directory (based on `.env.example`):
+
+```bash
+cp .env.example .env
+```
+
+Add your Kaggle and optional API tokens:
+
+```env
+# Kaggle API Configuration
+KAGGLE_API_TOKEN=your_kaggle_api_token_here
+VITE_KAGGLE_API_TOKEN=your_kaggle_api_token_here
+
+# TMDB API Configuration (Optional)
+VITE_TMDB_API_KEY=your_tmdb_api_key_here
+VITE_TMDB_BASE_URL=https://api.themoviedb.org/3
+VITE_TMDB_IMAGE_BASE_URL=https://image.tmdb.org/t/p
+```
+
+> [!NOTE]
+> `.env` is included in `.gitignore` to prevent credentials from being committed to source control.
+
+### 3. Run Development Server
+
+```bash
+npm run dev
+```
+
+Open your browser at `http://localhost:5173/` (or the URL displayed in your terminal).
+
+### 4. Build for Production
+
+```bash
+npm run build
+```
+
+Production assets will be built to the `dist/` directory.
+
+### 5. Run Linter
+
+```bash
+npm run lint
+```
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
